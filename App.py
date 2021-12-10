@@ -35,8 +35,6 @@ def budget():
                 food.deposit(new_budget)
                 budget_file.seek(0)
                 food_budget = budget_file.readline()
-                budget_file.seek(0)
-                budget_file.rstrip(10)
                 food_budget = int(food_budget)
                 food_budget = (food_budget + new_budget)
                 food_budget = str(food_budget)

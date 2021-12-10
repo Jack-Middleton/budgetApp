@@ -41,36 +41,43 @@ def edit_clothing():
 
 
 def food_to_clothing():
-    new_budget = input("How much would you like to move? ")
-    food.withdraw(new_budget)
-    clothing.deposit(new_budget)
+    new_budget = input("How much would you like to move? ")    
+    clothing.deposit(food.withdraw(new_budget))
 
 def food_to_entertainment():
-    new_budget = input("How much would you like to move? ")
-    food.withdraw(new_budget)
-    entertainment.deposit(new_budget)
+    new_budget = input("How much would you like to move? ")    
+    entertainment.deposit(food.withdraw(new_budget))
 
 def entertainment_to_clothing():
-    new_budget = input("How much would you like to move? ")
-    entertainment.withdraw(new_budget)
-    clothing.deposit(new_budget)
+    new_budget = input("How much would you like to move? ")    
+    clothing.deposit(entertainment.withdraw(new_budget))
 
 def entertainment_to_food():
-    new_budget = input("How much would you like to move? ")
-    entertainment.withdraw(new_budget)
-    food.deposit(new_budget)
+    new_budget = input("How much would you like to move? ")    
+    food.deposit(entertainment.withdraw(new_budget))
 
 def clothing_to_entertainment():
-    new_budget = input("How much would you like to move? ")
-    clothing.withdraw(new_budget)
-    entertainment.deposit(new_budget)
+    new_budget = input("How much would you like to move? ")    
+    entertainment.deposit(clothing.withdraw(new_budget))
     
 def clothing_to_food():
-    new_budget = input("How much would you like to move? ")
-    clothing.withdraw(new_budget)
-    food.deposit(new_budget)
+    new_budget = input("How much would you like to move? ")    
+    food.deposit(clothing.withdraw(new_budget))
 
-
+def edit_file():
+    budget_file = open("budget.txt", "w")
+    # writes the food budget to the file 
+    food_budget = ("your food budget is: "+ str(food))
+    budget_file.write(food_budget)
+    
+    #writes the entertainment budget to the file
+    entertainment_budget = ("\n your entertainment budget is: " + str(entertainment))
+    budget_file.write(entertainment_budget)
+    
+    #writes the clothing budget to the file
+    clothing_budget = ("\nyour clothing budget is: " + str(clothing))    
+    budget_file.write(clothing_budget)
+    budget_file.close()
 
 
 
@@ -117,28 +124,10 @@ def main():
                         food_to_clothing()       
         else:
             control = False
-        
-
-
-def edit_file():
-    budget_file = open("budget.txt", "w")
-    # writes the food budget to the file 
-    food_budget = (str(food))
-    budget_file.write(food_budget)
-    
-    #writes the entertainment budget to the file
-    entertainment_budget = ("\n" + str(entertainment))
-    budget_file.write(entertainment_budget)
-    
-    #writes the clothing budget to the file
-    clothing_budget = ("\n" + str(clothing))    
-    budget_file.write(clothing_budget)
-    budget_file.close() 
-    return budget_file
          
 
 
                     
 main()              
-print(edit_file())
+edit_file()
 
